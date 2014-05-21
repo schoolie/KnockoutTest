@@ -23,4 +23,6 @@
     <feature name="http://api.phonegap.com/1.0/network"/>
     <feature name="http://api.phonegap.com/1.0/notification"/>
  
+    <gap:plugin name="org.transistorsoft.cordova.background-geolocation" version="0.2.0" />
+
 </widget>
