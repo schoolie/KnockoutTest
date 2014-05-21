@@ -7,6 +7,12 @@ var ViewModel = function(first, last) {
         // Knockout tracks dependencies automatically. It knows that fullName depends on firstName and lastName, because these get called when evaluating fullName.
         return this.firstName() + " " + this.lastName();
     }, this);
-};
+    
+    
+    this.months =  [ new Button(1), new Button(2) ];
+}
  
+var Button = function(num) {
+    this.label = "CP"+num;
+}
 ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
