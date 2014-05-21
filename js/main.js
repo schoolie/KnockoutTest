@@ -25,6 +25,18 @@ var ViewModel = function(first, last) {
     }
     
     this.requestData();
+    
+    self.location = ko.observable();
+    
+    document.addEventListener("deviceready", onDeviceReady, false);
+    
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(
+        function(position) {
+              self.location = $.map(position.coords, function(item) { return new Location(item) });
+        }, onError);
+    }    
+            
 }
  
 var Point = function(data) {
@@ -37,4 +49,13 @@ var Point = function(data) {
 }
 ko.applyBindings(new ViewModel("Planet", "Earth")); // This makes Knockout get to work
 
-
+var Location = function(data) {
+    this.latitude = ko.observable(data.latitude);    
+    this.longitude = ko.observable(data.longitude);    
+    this.altitude = ko.observable(data.altitude);    
+    this.accuracy = ko.observable(data.accuracy);    
+    this.altitudeAccuracy = ko.observable(data.altitudeAccuracy);    
+    this.heading = ko.observable(data.heading);    
+    this.speed = ko.observable(data.speed);    
+    this.timestamp = ko.observable(data.timestamp); 
+}    
