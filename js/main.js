@@ -13,7 +13,7 @@ var ViewModel = function(first, last) {
         
     this.requestData = function() {
       $.ajax({
-            url: "http://localhost:5000/api/v1.0/courses/1",
+            url: "http://brianschoolcraft.com/api/v1.0/courses/1",
             type: "GET",
             dataType: "jsonp",
             success: function(allData) {
