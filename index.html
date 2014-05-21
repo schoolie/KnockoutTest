@@ -8,9 +8,11 @@
   <p>Last name: <input data-bind="value: lastName" /></p>
   <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
 
-  <ul data-bind="foreach: months">
+  <ul data-bind="foreach: points">
       <li>
-          <button><span data-bind="text: label"></span></button>
+          <button><span data-bind="text: title"></span></button>
+          <span data-bind="text: lat"></span>
+          <span data-bind="text: lon"></span>
       </li>
   </ul>
   
