@@ -1,26 +1,16 @@
-<head>
-
-</head>
-
-<body>
-
-  <p>First name: <input data-bind="value: firstName" /></p>
-  <p>Last name: <input data-bind="value: lastName" /></p>
-  <h2>Hello, <span data-bind="text: fullName"> </span>!</h2>
-
-  <ul data-bind="foreach: points">
-      <li>
-          <button><span data-bind="text: title"></span></button>
-          <span data-bind="text: lat"></span>
-          <span data-bind="text: lon"></span>
-      </li>
-  </ul>
+  <div id ="navcontainer">
+    <ul data-bind="foreach: points"  class="navlist">
+        <li><button class="cpButton"><span data-bind="text: title"></span></button></li>
+    </ul>
+  </div>
   
   <p>Lat: <span data-bind="text: location.latitude"></span></p>
   <p>Lon: <span data-bind="text: location.longitude"></span></p>
   
-  <script type='text/javascript' src="phonegap.js"></script>
-  <!-- <script type='text/javascript' src="cordova.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+
+  <!-- <script type='text/javascript' src="phonegap.js"></script> -->
+  <script type='text/javascript' src="cordova-2.5.0.js"></script>
   <script type='text/javascript' src='lib/jquery-1.11.1.js'></script>
   <script type='text/javascript' src='lib/knockout-3.1.0.js'></script>
   <script type='text/javascript' src='js/main.js'></script>

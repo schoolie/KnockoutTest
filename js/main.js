@@ -13,7 +13,7 @@ var ViewModel = function(first, last) {
         
     this.requestData = function() {
       $.ajax({
-            url: "http://brianschoolcraft.com/api/v1.0/courses/1",
+            url: "http://brianschoolcraft.com/api/v1.0/courses/3",
             type: "GET",
             dataType: "jsonp",
             success: function(allData) {
@@ -28,14 +28,25 @@ var ViewModel = function(first, last) {
     
     self.location = ko.observable();
     
-    document.addEventListener("deviceready", onDeviceReady, false);
-    
-    function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(
-        function(position) {
-              self.location = $.map(position.coords, function(item) { return new Location(item) });
-        }, onError);
-    }    
+    var onSuccess = function(position) {
+        alert('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+    };
+
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+
+    document.addEventListener("deviceready", function() {navigator.geolocation.getCurrentPosition(onSuccess, onError);}, false);
             
 }
  
@@ -57,5 +68,4 @@ var Location = function(data) {
     this.altitudeAccuracy = ko.observable(data.altitudeAccuracy);    
     this.heading = ko.observable(data.heading);    
     this.speed = ko.observable(data.speed);    
-    this.timestamp = ko.observable(data.timestamp); 
 }    
