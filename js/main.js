@@ -17,7 +17,7 @@ var ViewModel = function(first, last) {
             type: "GET",
             dataType: "jsonp",
             success: function(allData) {
-              navigator.notification.alert(allData);
+              navigator.notification.alert(JSON.stringify(allData, null, 4)) 
               var points = allData.data.mapPoints;
               var mappedPoints = $.map(points, function(item) { return new Point(item) });
               self.points(mappedPoints);
